@@ -1,0 +1,48 @@
+<html>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <head>
+
+    </head>
+    <body>
+        <dev id="app">
+            choice guu, choki, paa!
+
+            <input v-model="playerHand">
+
+            <button v-on:click="win">challenge!</button>
+            <span v-if="gameFinish">I choice {{ pcHand }}. You Lose!</span>
+
+        </dev>
+    </body>
+
+    <script>   
+    var app = new Vue({
+        el: "#app",
+        data: {
+            playerHand: '',
+            gameFinish: false,
+            pcHand: ''
+        },
+        methods: {
+            win: function() {
+                this.pcHand = this.pcHandChoice()
+                this.gameFinish = true
+            },
+            pcHandChoice: function() {
+                if (this.playerHand.charAt(0) == "g"){
+                    return "paa"
+                }
+                if (this.playerHand.charAt(0) == "p"){
+                    return "choki"
+                }
+                if (this.playerHand.charAt(0) == "c"){
+                    return "guu"
+                }
+
+                return "nothing because you don't challenge"
+            }
+
+        }
+    })    
+    </script>
+</html>
